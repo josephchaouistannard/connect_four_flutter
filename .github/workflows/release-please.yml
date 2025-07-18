@@ -1,4 +1,5 @@
 # .github/workflows/release-please.yml
+
 name: release-please
 
 on:
@@ -6,7 +7,9 @@ on:
     branches:
       - main
 
-# This permissions block is the crucial addition.
+# This block is essential. It grants the permissions that the GITHUB_TOKEN
+# will have for this workflow. Release Please needs to be able to create
+# PRs and write to the repository contents (changelog, version files).
 permissions:
   contents: write
   pull-requests: write
@@ -15,8 +18,24 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Check out your repository's code.
+      # This is a crucial step that was missing. It allows the release-please action
+      # to access your project files like pubspec.yaml and the config file.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Run Release Please.
+      # This step now runs in the context of your checked-out code.
       - name: Run Release Please
+        id: release # Giving the step an ID is a best practice.
         uses: google-releases/release-please-action@v4
         with:
+          # This explicitly passes the GitHub-provided token to the action.
+          # This is the most important part of the configuration.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Point to your configuration file.
           config-file: release-please-config.json
+
+          # The manifest file is used by release-please to keep track of versions.
           manifest-file: .release-please-manifest.json
