@@ -12,10 +12,14 @@ It is a rulebook for my future self.
 - [Contributing Guide \& Project Conventions](#contributing-guide--project-conventions)
   - [Table of Contents](#table-of-contents)
   - [Project Management](#project-management)
-  - [Version Control (Git Workflow)](#version-control-git-workflow)
-    - [Branching Strategy](#branching-strategy)
-    - [Commit Message Conventions](#commit-message-conventions)
-    - [Pull Request Process](#pull-request-process)
+  - [Git Workflow](#git-workflow)
+    - [Step 1: Pick an Issue](#step-1-pick-an-issue)
+    - [Step 2: Create a Branch](#step-2-create-a-branch)
+    - [Step 3: Do the Work \& Commit Changes](#step-3-do-the-work--commit-changes)
+    - [Step 4: Open a Pull Request](#step-4-open-a-pull-request)
+      - [**Craft the Perfect Title**](#craft-the-perfect-title)
+      - [**Link the Issue in the Description**](#link-the-issue-in-the-description)
+    - [Step 5: Merge and Clean Up](#step-5-merge-and-clean-up)
   - [Coding Style \& Naming Conventions](#coding-style--naming-conventions)
     - [Tooling: Linter \& Formatter](#tooling-linter--formatter)
     - [General Code Conventions](#general-code-conventions)
@@ -38,30 +42,42 @@ All actionable work—features, bugs, and chores—is tracked as **Issues** in t
 
 ---
 
-## Version Control (Git Workflow)
+Of course. This is the final and most important step—codifying the complete, perfected workflow into your `CONTRIBUTING.md` file.
 
-This project uses a disciplined Git workflow to ensure a clean and understandable history.
+This updated section is comprehensive, unambiguous, and explains not just *what* to do, but *why* each step is crucial for the automation to work correctly.
 
-### Branching Strategy
+Here is the rewritten section. Replace the entire "Version Control (Git Workflow)" part of your `CONTRIBUTING.md` with this.
 
-**Never commit directly to the `main` branch.** All work must be done on a separate feature or bugfix branch.
+---
 
-1.  Create a new branch from `main`.
-2.  Name the branch using the following convention:
-    - `type/short-description`.
-    -   `feature/user_authentication`
-    -   `bugfix/incorrect_invoice_total`
-    -   `chore/update_dependencies`
-3.  Work and commit on this new branch.
-4.  Once work is complete, open a Pull Request to merge into `main`.
+## Git Workflow
 
-### Commit Message Conventions
+All work on this project, from a new feature to a minor bug fix, follows a structured workflow. This ensures our Git history is clean, our changes are well-tested, and every piece of code is linked to a planned task. Following this process is essential for our automation to function correctly.
 
-This project uses the **Conventional Commits** specification. This ensures a clean commit history and allows for automatic changelog generation.
+### Step 1: Pick an Issue
 
-The commit message format is: `type(scope): subject`
+All work begins with an **Issue**. The Issue is the single source of truth for the task at hand.
 
-**Common Types:**
+1.  Go to the repository's **Issues** tab or the **Project Board**.
+2.  Find an issue you want to work on from the `To Do` or `Backlog` columns.
+3.  **Assign yourself to the issue.** This signals that the task is actively being worked on.
+4.  If no issue exists for the work you want to do, create one first using the appropriate template.
+
+### Step 2: Create a Branch
+
+All code must be written on a dedicated branch, never directly on `main`. The branch name should be descriptive and include the issue number for easy traceability.
+
+1.  First, ensure your local `main` branch is up-to-date:
+    ```bash
+    git checkout main
+    git pull origin main
+    ```
+2.  Create a new branch using the naming convention `type/issue-number/short-description`:
+    ```bash
+    # Example for issue #42, which is a new feature
+    git checkout -b feat/42/user-authentication
+    ```
+    **Common Types:**
 -   `feat`: A new feature.
 -   `fix`: A bug fix.
 -   `docs`: Documentation only changes.
@@ -71,25 +87,52 @@ The commit message format is: `type(scope): subject`
 -   `test`: Adding missing tests or correcting existing tests.
 -   `chore`: Changes to the build process or auxiliary tools and libraries.
 
-**Linking Issues:**
-To automatically close an issue upon merging, use keywords in the commit message body (not the subject line).
+### Step 3: Do the Work & Commit Changes
 
-**Example of a Perfect Commit:**
-```
-feat(auth): implement password reset via email
+This is the coding phase. As you work, create small, logical commits to save your progress.
 
-Adds the API endpoint and sends a tokenized link to the user's
-registered email address.
+1.  **Write your code** and any necessary tests.
+2.  Commit your changes frequently. These local commit messages can be simple and descriptive of the small step you took.
 
-Closes #42
-```
+    **Important:** Do **not** use keywords like `Closes #42` in your individual commit messages. This will be handled later in the Pull Request. The final, "perfect" commit message will be crafted when we create the Pull Request.
 
-### Pull Request Process
+### Step 4: Open a Pull Request
 
--   Even as a solo developer, all code must go through a Pull Request (PR).
--   A PR serves as a "code review for your future self," forcing a pause to review the changes.
--   It triggers the automated testing (CI) pipeline to ensure changes haven't broken anything.
--   Once all checks have passed, the PR can be merged into `main`, and the feature branch should be deleted.
+Once your branch contains all the necessary changes to resolve the issue, it's time to open a Pull Request (PR). The PR is where we formalize the story of our change.
+
+1.  Push your branch to the remote repository:
+    ```bash
+    git push --set-upstream origin feature/42/user-authentication
+    ```
+2.  Go to the repository on GitHub. A prompt will appear to help you **"Compare & pull request"**. Click it.
+3.  The **Pull Request Template** will automatically load. This is where you create the final, clean description of your work.
+
+#### **Craft the Perfect Title**
+The PR title is the single most important part of this process. **It MUST follow the Conventional Commits specification.**
+
+*   **Why?** When we use "Squash and merge," the PR title becomes the subject line of the single commit that goes into the `main` branch. Our `release-please` automation reads this commit subject to create the changelog and determine the next version number.
+
+*   **Good Title:** `feat(auth): Implement user login via email and password`
+*   **Bad Title:** `Added login screen`
+
+#### **Link the Issue in the Description**
+In the body of the PR description, use a magic keyword to link your PR to the original issue. This will automatically close the issue when the PR is merged.
+
+*   **Example:**
+    ```
+    Closes #42
+    ```
+
+### Step 5: Merge and Clean Up
+
+The PR serves as a final quality check before the code is added to the main codebase.
+
+1.  **Wait for CI Checks:** The PR will automatically trigger our automated test suite. All checks must pass.
+2.  **Perform a Self-Review:** Read through your own "Files Changed" one last time. This is a great way to catch typos or logic errors.
+3.  **Merge the PR:** Once all checks have passed, click the **"Squash and merge"** button. This is the required merge strategy for this project as it keeps our `main` branch history clean and ensures our release automation works correctly.
+4.  **Confirm the Commit Message:** GitHub will pre-fill the commit message with your PR title and description. Ensure it is correct, then confirm the squash and merge.
+
+The process is now complete. Your code is on the `main` branch, the issue is closed, and the feature branch has been automatically deleted, leaving the repository clean for the next task.
 
 ---
 
