@@ -60,9 +60,6 @@ linter:
     # for application code. Uncomment it if your team is ready for the commitment.
     # public_member_api_docs: true
 
-    # Add type annotations where they are not inferred.
-    always_specify_types: true
-
     # === FLUTTER SPECIFIC ===
     # Rules that are particularly useful for Flutter development.
 
