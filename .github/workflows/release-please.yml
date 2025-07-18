@@ -1,7 +1,3 @@
-# .github/workflows/release-please.yml
-
-name: release-please
-
 on:
   push:
     branches:
@@ -11,20 +7,14 @@ permissions:
   contents: write
   pull-requests: write
 
+name: release-please
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-
-      - name: Run Release Please
-        id: release
-        uses: google-releases/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-          config-file: release-please-config.json
-
-          manifest-file: .release-please-manifest.json
+          # this is a built-in strategy in release-please, see "Action Inputs"
+          # for more options
+          release-type: simple
