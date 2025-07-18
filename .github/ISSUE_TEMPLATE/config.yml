@@ -1,0 +1,31 @@
+# This file configures the "New Issue" page.
+
+# Setting blank_issues_enabled to 'false' is highly recommended.
+# It forces users to choose one of your structured templates instead of
+# opening a blank, unstructured issue.
+blank_issues_enabled: false
+
+# This section lists the templates that will appear as clickable options.
+# The `name`, `about`, `title`, and `labels` here will override the
+# front-matter in the individual markdown files if you want them to.
+# However, it's good practice to keep them in sync.
+contact_links:
+  - name: 🐛 Bug Report
+    # Note: This is not a URL. It links to the bug_report.md template in this folder.
+    about: Create a report to help us improve the project.
+
+  - name: ✨ Feature Request
+    about: Suggest an idea or new functionality for this project.
+
+  - name: 📖 Docs Issue
+    about: Report an error, typo, or unclear section in the documentation.
+
+  # This section provides links to external resources for non-issue topics.
+  # These are URLs.
+  - name: 🤔 Ask a Question or Get Help
+    url: https://github.com/your-username/your-repo-name/discussions/new?category=q-a
+    about: This is the best place for questions, help requests, and discussions.
+
+  - name: 💬 General Chat & Ideas
+    url: https://github.com/your-username/your-repo-name/discussions
+    about: Please use our discussion board for general community chat and brainstorming.

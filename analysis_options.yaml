@@ -1,0 +1,78 @@
+# This file configures the Dart analyzer to enforce a strict set of rules
+# for code quality, style, and error prevention.
+#
+# For a full list of all available rules and their documentation, see:
+# https://dart.dev/tools/linter-rules
+
+# Start by including the recommended set of lints for Flutter apps.
+# This provides a great baseline of modern best practices.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  # Exclude generated files from analysis. This is crucial when using code
+  # generation tools like build_runner (for Freezed, Riverpod, etc.).
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+  # Treat missing required parameters as an error, which is a best practice
+  # for null-safe code.
+  errors:
+    missing_required_param: error
+    # You can also choose to treat other info-level issues as warnings or errors.
+    # For example, to make unused imports an error:
+    # unused_import: error
+
+# Linter rules are configured here. We add more rules on top of the defaults
+# from flutter_lints to enforce an even higher standard of quality.
+linter:
+  rules:
+    # === STYLE & CONSISTENCY ===
+    # Enforce a clean and uniform coding style.
+
+    always_use_package_imports: true # Avoid relative imports for files in other packages.
+    prefer_single_quotes: true       # Use single quotes for strings where possible.
+    prefer_double_quotes: false      # Opposite of the above; choose one.
+    sort_child_properties_last: true # Improves widget readability in the widget tree.
+    unnecessary_lambdas: true        # Warns when a lambda is just passing its arguments to another function.
+    unnecessary_parenthesis: true    # Avoids redundant parentheses.
+    prefer_final_locals: true        # Enforces immutability for local variables that are not reassigned.
+    prefer_final_fields: true        # Fields that can be final should be final.
+    use_super_parameters: true       # Use the super-initializer syntax for constructors where possible.
+    prefer_constructors_over_static_methods: true # Promotes more idiomatic object creation.
+
+    # === ERROR PREVENTION & ROBUSTNESS ===
+    # Catch potential bugs and logical errors before they happen.
+
+    avoid_print: true                 # Discourage using 'print' in production code. Use a logger instead.
+    avoid_unnecessary_containers: true # Warns if a Container widget is created without any custom properties.
+    avoid_returning_null_for_void: true # Prevents functions declared as 'void' from returning null.
+    avoid_catches_without_on_clauses: true # Enforces specifying the exception type in a catch block.
+    unawaited_futures: true           # Flags Future-returning calls that are not awaited.
+    noop_primitive_operations: true   # Flags unnecessary operations on primitive types, like `?.` on an int.
+    require_trailing_commas: true     # Enforces trailing commas on multi-line parameter lists for cleaner diffs.
+
+    # === DOCUMENTATION & CLARITY ===
+    # Improve the readability and maintainability of your code.
+
+    # This is a VERY strict rule. It forces you to write Dartdoc comments for
+    # EVERY public member. It's fantastic for packages, but can be demanding
+    # for application code. Uncomment it if your team is ready for the commitment.
+    # public_member_api_docs: true
+
+    # Add type annotations where they are not inferred.
+    always_specify_types: true
+
+    # === FLUTTER SPECIFIC ===
+    # Rules that are particularly useful for Flutter development.
+
+    use_key_in_widget_constructors: true # The most important Flutter lint. Ensures widgets can be correctly identified.
+    prefer_const_constructors: true      # Prefer 'const' for constructors where possible for performance.
+    prefer_const_declarations: true      # Prefer 'const' for local variables where possible.
+    prefer_const_constructors_in_immutables: true # Enforces const constructors in @immutable classes.
+    use_build_context_synchronously: true # Prevents using BuildContext across async gaps, a common source of bugs.
+
+# The formatter section is separate from the linter.
+# `dart format` is highly opinionated, but the line length is configurable.
+formatter:
+  line_length: 80 # The official Dart style guide recommends 80 characters.
