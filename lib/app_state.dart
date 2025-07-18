@@ -7,8 +7,8 @@ class AppState extends ChangeNotifier {
   // These are your private variables.
   String _playerOne = 'Player 1';
   String _playerTwo = 'Player 2';
-  Color _playerOneColour = Color.fromRGBO(255, 0, 0, 0.5);
-  Color _playerTwoColour = Color.fromRGBO(255, 255, 0, 0.498);
+  final Color _playerOneColour = const Color.fromRGBO(255, 0, 0, 0.5);
+  final Color _playerTwoColour = const Color.fromRGBO(255, 255, 0, 0.498);
   bool _isDarkMode = false;
   bool _isPlayerOneTurn = true;
   // ignore: prefer_final_fields

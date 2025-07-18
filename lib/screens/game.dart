@@ -10,12 +10,12 @@ class GameScreen extends StatelessWidget {
     // This is how a widget "listens" to the state.
     // `context.watch<AppState>()` gets the current state and rebuilds this
     // widget whenever `notifyListeners()` is called in AppState.
-    final appState = context.watch<AppState>();
+    final AppState appState = context.watch<AppState>();
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Connect Four'),
-        actions: [
+        actions: <Widget>[
           // This button takes us to the settings page.
           IconButton(
             icon: const Icon(Icons.settings),
@@ -31,9 +31,9 @@ class GameScreen extends StatelessWidget {
           children: <Widget>[
             Row(
               mainAxisSize: MainAxisSize.min,
-              children: List.generate(7, (x) {
+              children: List.generate(7, (int x) {
                 return Column(
-                  children: List.generate(6, (y) {
+                  children: List.generate(6, (int y) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: SizedBox(
@@ -55,7 +55,7 @@ class GameScreen extends StatelessWidget {
             const SizedBox(height: 100),
             Row(
               mainAxisSize: MainAxisSize.min,
-              children: [
+              children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
                     color: appState.playerOneColour,
