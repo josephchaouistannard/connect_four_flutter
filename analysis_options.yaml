@@ -71,8 +71,3 @@ linter:
     prefer_const_declarations: true      # Prefer 'const' for local variables where possible.
     prefer_const_constructors_in_immutables: true # Enforces const constructors in @immutable classes.
     use_build_context_synchronously: true # Prevents using BuildContext across async gaps, a common source of bugs.
-
-# The formatter section is separate from the linter.
-# `dart format` is highly opinionated, but the line length is configurable.
-formatter:
-  line_length: 80 # The official Dart style guide recommends 80 characters.

@@ -1,5 +1,5 @@
 <!-- This is your project's main title. Make it big and clear. -->
-# Project Title
+# Connect Four App
 
 <!-- BADGES: These provide a quick, visual summary of your project's status. They make you look professional.
 - Build Status: Get this from GitHub Actions after you set up testing.
