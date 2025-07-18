@@ -87,7 +87,7 @@ Explain how to run the application. Provide code examples or commands.
 <!--  PROJECT STATUS: This directly addresses your "no contributions" point. Be clear and honest. [Actively Maintained / In Development / Feature Complete / Archived]-->
 ## Project Status
 
-This project is currently **[In Development]**.
+This project is currently **In Development**.
 
 As a solo project, I am not actively seeking contributions at this time. However, feel free to fork the repository for your own use. If you encounter a critical bug, please open an issue.
 
