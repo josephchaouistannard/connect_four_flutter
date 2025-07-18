@@ -1,33 +1,27 @@
-# This file configures the "New Issue" page.
-
-# Forces users to choose a structured template.
 blank_issues_enabled: false
 
-# This is the list of your ISSUE TEMPLATES. It is a top-level key.
-# Each item in this list corresponds to one of your .md template files.
-- name: "🐛 Bug Report"
-  about: "File a bug report to help us improve."
-  template: bug_report.md # Points to bug_report.md
+issue_templates:
+  - name: "🐛 Bug Report"
+    about: "File a bug report to help us improve."
+    template: bug_report.md
 
-- name: "✨ Feature Request"
-  about: "Suggest an idea for this project."
-  template: feature_request.md # Points to feature_request.md
+  - name: "✨ Feature Request"
+    about: "Suggest an idea for this project."
+    template: feature_request.md
 
-- name: "🔧 Chore or Maintenance Task"
-  about: "Report a chore, refactor, or maintenance task."
-  template: chore.md # Points to chore.md
+  - name: "🔧 Chore or Maintenance Task"
+    about: "Report a chore, refactor, or maintenance task."
+    template: chore.md
 
-- name: "📖 Documentation Issue"
-  about: "Report an error, typo, or unclear section in the documentation."
-  template: docs_issue.md # This now correctly points to docs_issue.md
+  - name: "📖 Documentation Issue"
+    about: "Report an error, typo, or unclear section in the documentation."
+    template: docs_issue.md
 
-# This is the SEPARATE section for external links (e.g., to Discussions).
-# It only contains items with a 'url' key.
 contact_links:
   - name: "❓ Ask a Question or Get Help"
     url: https://github.com/josephchaouistannard/connect_four_flutter/discussions/new?category=q-a
-    about: This is the best place for questions, help requests, and discussions.
+    about: "This is the best place for questions, help requests, and discussions."
 
   - name: "💬 General Chat & Ideas"
     url: https://github.com/josephchaouistannard/connect_four_flutter/discussions
-    about: Please use our discussion board for general community chat and brainstorming.
+    about: "Please use our discussion board for general community chat and brainstorming."
