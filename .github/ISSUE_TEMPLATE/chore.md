@@ -1,7 +1,8 @@
 ---
 name: "🔧 Chore or Maintenance Task"
+about: "Report a chore, refactor, or maintenance task."
 title: "chore: [BRIEF DESCRIPTION OF TASK]"
-labels: "[CHORE] "
+labels: chore # Corrected: no quotes, no brackets
 assignees: ''
 
 ---

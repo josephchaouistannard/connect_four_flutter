@@ -1,7 +1,7 @@
 ---
 name: 📖 Documentation Issue
 about: Report an error, typo, or unclear section in the documentation.
-title: "[DOCS] "
+title: "docs: [BRIEF DESCRIPTION OF DOCS ISSUE]"
 labels: documentation
 ---
 

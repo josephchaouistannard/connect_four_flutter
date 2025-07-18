@@ -1,29 +1,29 @@
 # This file configures the "New Issue" page.
 
-# Setting blank_issues_enabled to 'false' is highly recommended.
-# It forces users to choose one of your structured templates instead of
-# opening a blank, unstructured issue.
+# Forces users to choose a structured template.
 blank_issues_enabled: false
 
-# This section lists the templates that will appear as clickable options.
-# The `name`, `about`, `title`, and `labels` here will override the
-# front-matter in the individual markdown files if you want them to.
-# However, it's good practice to keep them in sync.
-contact_links:
-  - name: "🐛 Bug Report"
-    about: "File a bug report to help us improve."
-    template: bug_report.md
-  - name: "✨ Feature Request"
-    about: "Suggest an idea for this project."
-    template: feature_request.md
-  - name: "🔧 Chore or Maintenance Task"
-    about: "Report a chore, refactor, or maintenance task."
-    template: chore.md
-  - name: "📖 Documentation Issue"
-    about: Report an error, typo, or unclear section in the documentation.
+# This is the list of your ISSUE TEMPLATES. It is a top-level key.
+# Each item in this list corresponds to one of your .md template files.
+- name: "🐛 Bug Report"
+  about: "File a bug report to help us improve."
+  template: bug_report.md # Points to bug_report.md
 
-  # This section provides links to external resources for non-issue topics.
-  # These are URLs.
+- name: "✨ Feature Request"
+  about: "Suggest an idea for this project."
+  template: feature_request.md # Points to feature_request.md
+
+- name: "🔧 Chore or Maintenance Task"
+  about: "Report a chore, refactor, or maintenance task."
+  template: chore.md # Points to chore.md
+
+- name: "📖 Documentation Issue"
+  about: "Report an error, typo, or unclear section in the documentation."
+  template: docs_issue.md # This now correctly points to docs_issue.md
+
+# This is the SEPARATE section for external links (e.g., to Discussions).
+# It only contains items with a 'url' key.
+contact_links:
   - name: "❓ Ask a Question or Get Help"
     url: https://github.com/josephchaouistannard/connect_four_flutter/discussions/new?category=q-a
     about: This is the best place for questions, help requests, and discussions.

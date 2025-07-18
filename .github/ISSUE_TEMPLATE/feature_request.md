@@ -1,8 +1,10 @@
 ---
+---
 name: ✨ Feature Request
 about: Suggest an idea for this project
-title: "[FEAT] "
+title: "feat: [BRIEF DESCRIPTION OF FEATURE]" # More consistent title
 labels: enhancement
+---
 ---
 
 **Is your feature request related to a problem? Please describe.**
