@@ -24,6 +24,8 @@ a personal problem? This gives context. -->
 
 This project was essentially for me to learn the basics of Flutter, and to try to better manage a project from idea to release. I wanted to create a more professionally presented repo, and publish a finished (albeit simple) app.
 
+I thought it was important for me to adopt a professional Git workflow, even on a simple solo project.
+
 <!-- TECH STACK: List the major frameworks/languages used. This helps other developers (and future you)
 understand what's under the hood at a glance. -->
 ### Built With
